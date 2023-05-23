@@ -8,6 +8,8 @@ tg_token = variables['tokens']['tg_token']
 AI_token = variables['tokens']['AI_token']
 employees = variables['employees']
 db_file = "database.vdb"
+max_tokens = 1024
+image_size = "256x256"
 
 class States(Enum):
 

@@ -1,32 +1,53 @@
 # Project Readme
 
-This project is a chatbot that uses the open API OpenAI to generate text and images based on user queries. The bot is capable of generating text using GPT-3 and images using DALL-E.
-
-## Usage
-
-To start using the bot, send a message with your query to the bot's chat. If you want to request an image generation, use the /image command and the bot will prompt you to enter your idea for image generation.
-
-Additionally, the bot has a chat mode that can be activated with the /chat command. In chat mode, you can have a conversation with the bot and get answers to your questions.
-
-To use the bot, you need to specify the tokens for OpenAI API and Telegram in the config.py file.
+This project provides companies with a way to give their employees access to ChatGPT through Telegram. The project uses OpenAI tokens and a list of employees stored in a `variables.json` file.
 
 ## Installation
 
-To install and run this project, follow these steps:
+1. Clone this repository
+2. Install the required packages by running `pip install -r requirements.txt`
+3. Create a `variables.json` file with the following structure:
 
-1. Clone or download the project from the repository.
-2. Install the required dependencies by running the following command in your terminal: `python -m pip install -r requirements.txt`.
-3. Before running the bot, make sure to specify your tokens for OpenAI API and Telegram in the `config.py` file.
-4. To start the bot, run the `main.py` file in your terminal.
-5. Send a message to the bot's chat with your query to get a text or image response.
-6. If you want to request an image generation, use the /image command and enter your idea for image generation when prompted
-7. To activate chat mode, use the /chat command.
-8. To stop the bot, press Ctrl + C in your terminal.
+```
+{
+  "tokens": {
+    "tg_token": "telegram_bot_token",
+    "AI_token": "openai_token"
+  },
+  "employees": [
+    "telegram_chat_id"
+  ]
+}
+```
 
-## Contributing
+4. Replace `telegram_bot_token` and `openai_token` with your own Telegram bot token and OpenAI token respectively.
+5. Add the Telegram chat IDs of all employees who should have access to the bot.
 
-This project can be used as a basis for developing other bots and integrations with OpenAI API. All contributions are welcome! Clone the repository, create a new branch, make changes, and submit a pull request.
+## Usage
 
-## Credits
+To get started, run the following command:
 
-This project was created by Dmitry Serafin.
+```
+python main.py
+```
+
+### How to Get Chat ID
+
+To get your chat ID, follow these steps:
+
+1. Start a conversation with `@getmyid_bot` in Telegram.
+2. Send the `/start` command to `@getmyid_bot`.
+3. The bot will respond with your chat ID.
+
+### Available Commands
+
+- `/image` - Start a conversation to generate an image
+- `/chat` - Start a conversation with ChatGPT
+
+## Authors
+
+- Dmitry Serafin
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).

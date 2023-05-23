@@ -42,7 +42,6 @@ def first_mesage(message):
 @bot.message_handler(func=lambda message: dbworker.get_current_state(message.chat.id) == config.States.S_SECOND_MESSAGE.value)
 def second_mesage(message):
     if str(message.chat.id) in config.employees:
-        print(dbworker.get_previous_message(message.chat.id))
         completion = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             max_tokens=config.max_tokens,

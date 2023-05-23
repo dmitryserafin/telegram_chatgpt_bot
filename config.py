@@ -1,7 +1,12 @@
 from enum import Enum
+import json
 
-tg_token = '<your_Telegram_token>'
-AI_token = '<your_OpenAi_token>'
+with open('variables.json') as variable:
+    variables = json.load(variable)
+
+tg_token = variables['tokens']['tg_token']
+AI_token = variables['tokens']['AI_token']
+employees = variables['employees']
 db_file = "database.vdb"
 
 class States(Enum):

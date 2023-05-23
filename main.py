@@ -5,7 +5,7 @@ import dbworker
 
 openai.api_key = config.AI_token
 bot=telebot.TeleBot(config.tg_token)
-previus_response = 'null'
+previus_response = {"role": "assistant", "content": "start"}
 
 @bot.message_handler(commands=["image"])
 def start_image(message):
@@ -22,11 +22,11 @@ def message_chat(message):
             model="gpt-3.5-turbo",
             max_tokens=512,
             messages=[
-                {"role": "assistant", "content": previus_response},
+                previus_response,
                 {"role": "user", "content": message.text}
             ]
         )
-        previus_response = completion.choices[0].message.content
+        previus_response = completion.choices[0].message
         bot.reply_to(message, completion.choices[0].message.content)
     else:
         bot.reply_to(message, 'Прости, но ты не добавлен в список сотрудников! Обратись к @nickname в slack')
